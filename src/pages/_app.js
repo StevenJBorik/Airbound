@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/">
+                <Link href="/create-nft">
                   <a className="nav-link">Sell Airbit</a>
                 </Link>
               </li>

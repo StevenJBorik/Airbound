@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
@@ -55,7 +55,7 @@ export default function CreateItem() {
         const connection = await web3Modal.connect()
         const provider = new ethers.providers.Web3Provider(connection)
         const signer = provider.getSigner()
-    
+        console.log(formInput)
         /* next, create the item */
         const price = ethers.utils.parseUnits(formInput.price, 'ether')
         let contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, signer)
@@ -69,7 +69,34 @@ export default function CreateItem() {
 
     return (
         <div className="flex justify-center">
-            
+            <Form>
+                <Form.Group className="mb-3" controlId="" onChange={e => updateFormInput({ ...formInput, name: e.target.value })}>
+                    <Form.Label>Airbit Name</Form.Label>
+                    <Form.Control type="" placeholder="" />
+                    <Form.Text className="text-muted">
+                        Give it a cool name!
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="" onChange={e => updateFormInput({ ...formInput, description: e.target.value })}>
+                    <Form.Label>Airbit Description</Form.Label>
+                    <Form.Control type="" placeholder="" />
+                    <Form.Text className="text-muted">
+                        What's happening in this Airbit?
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="" onChange={e => updateFormInput({ ...formInput, price: e.target.value })}>
+                    <Form.Label>Airbit Price</Form.Label>
+                    <Form.Control type="" placeholder="" />
+                    <Form.Text className="text-muted">
+                        Be staunch!
+                    </Form.Text>
+                </Form.Group>
+                <Form.Group controlId="formFile" className="mb-3" onChange={onChange}>
+                    <Form.Label>Default file input example</Form.Label>
+                    <Form.Control type="file" />
+                </Form.Group>
+                <Button onClick={listNFTForSale}>Buy</Button>
+            </Form>
         </div>
     )
 }

@@ -64,7 +64,7 @@ export default function Home() {
     loadNFTs()
   }
 
-  if (loadingState === 'loaded' && !nfts.length) return (<h1>No items in marketplace</h1>)
+  if (loadingState === 'loaded' && !nfts.name == null) return (<h1>No items in marketplace</h1>)
   
   return (
     <div className="flex justify-center">
