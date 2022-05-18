@@ -3,13 +3,14 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
-import { Form, Button } from 'react-bootstrap'
+import { Row, Col, Card, Button, Form } from "react-bootstrap"
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
 import {
     marketplaceAddress
   } from '../../config'
+
 import NFTMarketplace from '../../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json'
 
 export default function CreateItem() {
@@ -95,7 +96,7 @@ export default function CreateItem() {
                     <Form.Label>Default file input example</Form.Label>
                     <Form.Control type="file" />
                 </Form.Group>
-                <Button onClick={listNFTForSale}>Buy</Button>
+                <Button onClick={listNFTForSale}>Sell</Button>
             </Form>
         </div>
     )

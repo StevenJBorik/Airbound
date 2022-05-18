@@ -29,12 +29,12 @@ function MyApp({ Component, pageProps }) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/">
+                <Link href="/my-nfts">
                   <a className="nav-link">My Airbits</a>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link href="/">
+                <Link href="/dashboard">
                   <a className="nav-link">Airbiter Dashboard</a>
                 </Link>
               </li>

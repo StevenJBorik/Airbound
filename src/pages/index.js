@@ -20,11 +20,11 @@ export default function Home() {
   
   async function loadNFTs() {
     /* create a generic provider and query for unsold market items */
-    const provider = new ethers.providers.JsonRpcProvider()
+    const provider = new ethers.providers.JsonRpcProvider("https://matic-mumbai.chainstacklabs.com")
     const contract = new ethers.Contract(marketplaceAddress, NFTMarketplace.abi, provider)
     const data = await contract.fetchMarketItems()
 
-    /*
+    /*  
     *  map over items returned from smart contract and format 
     *  them as well as fetch their token metadata
     */
@@ -64,7 +64,7 @@ export default function Home() {
     loadNFTs()
   }
 
-  if (loadingState === 'loaded' && !nfts.name == null) return (<h1>No items in marketplace</h1>)
+  if (loadingState === 'loaded' && !nfts.length) return (<h1>No items in marketplace</h1>)
   
   return (
     <div className="flex justify-center">
